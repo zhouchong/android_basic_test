@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
     private class toggleButton extends AsyncTask<Boolean, Void, Boolean> {
         protected Boolean doInBackground(Boolean... urls) {
-            str = "Doing Button1Task ...\n";
-            str += "param = " + urls[0];
+            str = "Doing toggleButton ...\n";
+            str += "param = " + urls[0] + "\n";
             handler.post(myRunnable);
             //todo
             return true;
@@ -86,12 +86,12 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPostExecute(Boolean result) {
             if (result) {
-                Toast.makeText(MainActivity.this, "Button1Task Success", Toast.LENGTH_SHORT).show();
-                str = "Button1Task Success\n";
+                Toast.makeText(MainActivity.this, "toggleButton Success", Toast.LENGTH_SHORT).show();
+                str = "toggleButton Success\n";
                 handler.post(myRunnable);
             } else {
-                Toast.makeText(MainActivity.this, "Button1Task Failed", Toast.LENGTH_SHORT).show();
-                str = "Button1Task Failed\n";
+                Toast.makeText(MainActivity.this, "toggleButton Failed", Toast.LENGTH_SHORT).show();
+                str = "toggleButton Failed\n";
                 handler.post(myRunnable);
             }
         }
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     private class button1Task extends AsyncTask<String, Void, Boolean> {
         protected Boolean doInBackground(String... urls) {
             str = "Doing Button1Task ...\n";
-            str += "param = " + urls[0];
+            str += "param = " + urls[0] + "\n";
             handler.post(myRunnable);
             //todo
             return true;
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     private class button2Task extends AsyncTask<String, Void, Boolean> {
         protected Boolean doInBackground(String... urls) {
             str = "Doing Button2Task ...\n";
-            str += "param = " + urls[0];
+            str += "param = " + urls[0] + "\n";
             handler.post(myRunnable);
             //todo
             return true;
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     private class button3Task extends AsyncTask<String, Void, Boolean> {
         protected Boolean doInBackground(String... urls) {
             str = "Doing Button3Task ...\n";
-            str += "param = " + urls[0];
+            str += "param = " + urls[0] + "\n";
             handler.post(myRunnable);
             //todo
             return true;
