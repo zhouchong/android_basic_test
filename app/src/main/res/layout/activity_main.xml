@@ -23,6 +23,18 @@
     android:textSize="15sp">
 </TextView>
 
+<Button
+	android:id="@+id/button_clear"
+	style="@style/Widget.AppCompat.Button.Small"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_above="@+id/button_container"
+	android:layout_alignParentEnd="true"
+	android:background="@android:color/holo_blue_bright"
+	android:gravity="center"
+	android:text="清屏">
+</Button>
+
 <LinearLayout
     android:id="@+id/button_container"
     android:layout_width="match_parent"

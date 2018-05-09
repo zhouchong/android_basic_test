@@ -21,15 +21,19 @@ public class MainActivity extends AppCompatActivity {
 
     //将调试信息显示到TextView
     private Handler handler = new Handler();
-    private Runnable myRunnable = new Runnable() {
+    private class myRunnable implements Runnable {
+        String str;
+        private myRunnable(String str) {
+            this.str = str;
+        }
         public void run() {
-            txt.append(str);
+            txt.append(this.str);
             int offset=txt.getLineCount()*txt.getLineHeight();
             if (offset > txt.getHeight()) {
                 txt.scrollTo(0, offset - txt.getHeight());
             }
         }
-    };
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         txt = (TextView) findViewById(R.id.textView);
         txt.setMovementMethod(ScrollingMovementMethod.getInstance());
+
+        //清屏
+        final Button button_clear = (Button) findViewById(R.id.button_clear);
+        button_clear.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                txt.setText("");
+                txt.scrollTo(0, 0);
+            }
+        });
 
         final ToggleButton toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -79,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         protected Boolean doInBackground(Boolean... urls) {
             str = "Doing toggleButton ...\n";
             str += "param = " + urls[0] + "\n";
-            handler.post(myRunnable);
+            handler.post(new myRunnable(str));
             //todo
             return true;
         }
@@ -88,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
             if (result) {
                 Toast.makeText(MainActivity.this, "toggleButton Success", Toast.LENGTH_SHORT).show();
                 str = "toggleButton Success\n";
-                handler.post(myRunnable);
+                handler.post(new myRunnable(str));
             } else {
                 Toast.makeText(MainActivity.this, "toggleButton Failed", Toast.LENGTH_SHORT).show();
                 str = "toggleButton Failed\n";
-                handler.post(myRunnable);
+                handler.post(new myRunnable(str));
             }
         }
     }
@@ -101,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         protected Boolean doInBackground(String... urls) {
             str = "Doing Button1Task ...\n";
             str += "param = " + urls[0] + "\n";
-            handler.post(myRunnable);
+            handler.post(new myRunnable(str));
             //todo
             return true;
         }
@@ -110,11 +123,11 @@ public class MainActivity extends AppCompatActivity {
             if (result) {
                 Toast.makeText(MainActivity.this, "Button1Task Success", Toast.LENGTH_SHORT).show();
                 str = "Button1Task Success\n";
-                handler.post(myRunnable);
+                handler.post(new myRunnable(str));
             } else {
                 Toast.makeText(MainActivity.this, "Button1Task Failed", Toast.LENGTH_SHORT).show();
                 str = "Button1Task Failed\n";
-                handler.post(myRunnable);
+                handler.post(new myRunnable(str));
             }
         }
     }
@@ -123,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         protected Boolean doInBackground(String... urls) {
             str = "Doing Button2Task ...\n";
             str += "param = " + urls[0] + "\n";
-            handler.post(myRunnable);
+            handler.post(new myRunnable(str));
             //todo
             return true;
         }
@@ -132,11 +145,11 @@ public class MainActivity extends AppCompatActivity {
             if (result) {
                 Toast.makeText(MainActivity.this, "Button2Task Success", Toast.LENGTH_SHORT).show();
                 str = "Button2Task Success\n";
-                handler.post(myRunnable);
+                handler.post(new myRunnable(str));
             } else {
                 Toast.makeText(MainActivity.this, "Button2Task Failed", Toast.LENGTH_SHORT).show();
                 str = "Button2Task Failed\n";
-                handler.post(myRunnable);
+                handler.post(new myRunnable(str));
             }
         }
     }
@@ -145,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         protected Boolean doInBackground(String... urls) {
             str = "Doing Button3Task ...\n";
             str += "param = " + urls[0] + "\n";
-            handler.post(myRunnable);
+            handler.post(new myRunnable(str));
             //todo
             return true;
         }
@@ -154,11 +167,11 @@ public class MainActivity extends AppCompatActivity {
             if (result) {
                 Toast.makeText(MainActivity.this, "Button3Task Success", Toast.LENGTH_SHORT).show();
                 str = "Button3Task Success\n";
-                handler.post(myRunnable);
+                handler.post(new myRunnable(str));
             } else {
                 Toast.makeText(MainActivity.this, "Button3Task Failed", Toast.LENGTH_SHORT).show();
                 str = "Button3Task Failed\n";
-                handler.post(myRunnable);
+                handler.post(new myRunnable(str));
             }
         }
     }
