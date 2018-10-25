@@ -121,8 +121,12 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPostExecute(Boolean result) {
             if (result) {
-                Toast.makeText(MainActivity.this, "Button1Task Success", Toast.LENGTH_SHORT).show();
-                str = "Button1Task Success\n";
+                str = "------------------------------------\n";
+                try {
+                    RSA.main();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 handler.post(new myRunnable(str));
             } else {
                 Toast.makeText(MainActivity.this, "Button1Task Failed", Toast.LENGTH_SHORT).show();
@@ -137,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             str = "Doing Button2Task ...\n";
             str += "param = " + urls[0] + "\n";
             handler.post(new myRunnable(str));
-            //todo
+            new CountDownLatchTest().testCountDownLatch();
             return true;
         }
 
